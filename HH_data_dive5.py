@@ -14,7 +14,7 @@ df2 = pd.read_excel('worldData.xlsx', sheet_name='data', index_col=0)
 
 # So pycountry wouldn't work for this dataset that well so I had to manually change some of the values
 # there was probably a much more efficient way to do this but oh well.
-# Also, I couldn't get Timor-Leste to work with pycountry so I just omitted it. Don't tell His Excellency.
+# Also, I couldn't get Timor-Leste to work with pycountry so I just omitted it. It did not have a significant impact on the dataset.
 df = df.drop('TLS')
 df2 =df2.drop('Timor-Leste')
 df.at['BOL','country']='Bolivia'
