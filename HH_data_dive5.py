@@ -45,7 +45,7 @@ continents = {
     'EU': 'Europe'
 }
 
-# Got some of this code from Stack Overflow. Also used the documentation of pycountry
+
 list_of_continents = [continents[country_alpha2_to_continent_code(country_name_to_country_alpha2(country))] for country in list_of_countries]
 
 # make a new continent column
@@ -53,7 +53,7 @@ final_df = final_df.assign(Continent=list_of_continents)
 
 final_df = final_df.loc[ :,['Buddhist', 'Christian', 'Hindu', 'Muslim', 'Continent']]
 
-# I learned a lot about groupby() on this project. Was very helpful.
+
 final_df = final_df.groupby(['Continent'])[['Buddhist', 'Christian', 'Hindu', 'Muslim']].mean().reset_index()
 
 # I did this because circlify wouldn't label the circles correctly but this method worked.
@@ -64,15 +64,15 @@ muslim = final_df.sort_values(by = 'Muslim', ascending=True)
 
 
 
-# This is the code for the circlify part. Got most of this code from the documenation and also an
-# article explaining how to use circlify.
 
-# I just changed a couple things to get plots of all the religions.
+# Change the column in final_df accordingly.
 circles = circlify.circlify(
     final_df['Muslim'].tolist(), 
     show_enclosure=False, 
     target_enclosure=circlify.Circle(x=0, y=0, r=1)
 )
+
+# Change the title accordingly
 
 fig, ax = plt.subplots(figsize=(5,5))
 # Remove axes
@@ -90,7 +90,7 @@ lim = max(
 plt.xlim(-lim, lim)
 plt.ylim(-lim, lim)
 
-
+# Change the df accordingly
 labels = muslim['Continent']
 
 # print circles
